@@ -1,0 +1,21 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: project-management-service
+  datasource:
+    url: ${DB_URL:jdbc:mysql://204.168.203.32:3306/landslide_monitoring}
+    username: ${DB_USERNAME:landslide}
+    password: ${DB_PASSWORD:}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+app:
+  seed:
+    enabled: true
