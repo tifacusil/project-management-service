@@ -61,7 +61,7 @@ This service supports `.env` (via `spring-dotenv`), so you can define variables 
 
 | Setting | Default | Env var equivalent |
 |---|---:|---|
-| `spring.datasource.url` | `${DB_URL:jdbc:mysql://204.168.203.32:3306/landslide_monitoring}` | `DB_URL` or `SPRING_DATASOURCE_URL` |
+| `spring.datasource.url` | `${DB_URL:jdbc:mysql://204.168.203.32:3306/project_management_db}` | `DB_URL` or `SPRING_DATASOURCE_URL` |
 | `spring.datasource.username` | `${DB_USERNAME:landslide}` | `DB_USERNAME` or `SPRING_DATASOURCE_USERNAME` |
 | `spring.datasource.password` | `${DB_PASSWORD:}` | `DB_PASSWORD` or `SPRING_DATASOURCE_PASSWORD` |
 
@@ -77,7 +77,7 @@ This service supports `.env` (via `spring-dotenv`), so you can define variables 
 
 ## Database (MySQL)
 
-Database: `landslide_monitoring`.
+Database: `project_management_db`.
 
 Required tables:
 
@@ -227,7 +227,7 @@ sudo nano /etc/project-management-service.env
 Example:
 
 ```bash
-DB_URL=jdbc:mysql://204.168.203.32:3306/landslide_monitoring
+DB_URL=jdbc:mysql://204.168.203.32:3306/project_management_db
 DB_USERNAME=landslide
 DB_PASSWORD=...
 APP_SEED_ENABLED=true
