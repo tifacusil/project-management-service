@@ -4,6 +4,22 @@ server:
 spring:
   application:
     name: project-management-service
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      # Token ACL para registrarse en un Consul con ACLs habilitadas (default deny).
+      # Se inyecta por entorno; nunca hardcodear el secreto en el repo.
+      # Si Consul rechaza/no responde, la app igual arranca (no crash-loop).
+      fail-fast: false
+      discovery:
+        acl-token: ${CONSUL_TOKEN:30b4d3c6-55d7-0276-7f76-178a4d10da35}
+        register: true
+        deregister: true
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}-${random.value}
+        health-check-path: /actuator/health
+        health-check-interval: 15s
   datasource:
     url: ${DB_URL:jdbc:mysql://204.168.203.32:3306/project_management_db}
     username: ${DB_USERNAME:landslide}
@@ -15,6 +31,15 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
 
 app:
   seed:
