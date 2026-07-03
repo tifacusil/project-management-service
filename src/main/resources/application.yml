@@ -18,7 +18,7 @@ spring:
         deregister: true
         prefer-ip-address: true
         instance-id: ${spring.application.name}-${random.value}
-        health-check-path: /actuator/health
+        health-check-path: /health
         health-check-interval: 15s
   datasource:
     url: ${DB_URL:jdbc:mysql://204.168.203.32:3306/project_management_db}
@@ -35,11 +35,21 @@ mybatis:
 management:
   endpoints:
     web:
+      base-path: /
+      path-mapping:
+        prometheus: metrics
       exposure:
-        include: health,info
-  endpoint:
-    health:
-      show-details: always
+        include: info,prometheus
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        pm.persist.latency: true
+      slo:
+        pm.persist.latency: 5ms,10ms,25ms,50ms,100ms,250ms,500ms,1s
 
 app:
   seed:
