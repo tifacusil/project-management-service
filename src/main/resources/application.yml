@@ -48,8 +48,10 @@ management:
     distribution:
       percentiles-histogram:
         pm.persist.latency: true
+        http.server.requests: true
       slo:
         pm.persist.latency: 5ms,10ms,25ms,50ms,100ms,250ms,500ms,1s
+        http.server.requests: 5ms,10ms,25ms,50ms,100ms,250ms,500ms,1s
 
 app:
   seed:
