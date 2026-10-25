@@ -49,7 +49,7 @@ Default HTTP port is `8084` (see `server.port` in `src/main/resources/applicatio
 
 All configuration lives in `src/main/resources/application.yml` and can be overridden via environment variables (Spring Boot standard mapping rules apply).
 
-This service supports `.env` (via `spring-dotenv`), so you can define variables in a `.env` file located in the process working directory.
+This service supports `.env` (via `spring-dotenv`), so you can define variables in a `.env` file located in the process working directory. Start from the template: `cp .env.example .env`, then fill in `DB_PASSWORD` and `CONSUL_TOKEN`.
 
 ### Core
 

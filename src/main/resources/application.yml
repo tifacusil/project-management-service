@@ -13,7 +13,7 @@ spring:
       # Si Consul rechaza/no responde, la app igual arranca (no crash-loop).
       fail-fast: false
       discovery:
-        acl-token: ${CONSUL_TOKEN:30b4d3c6-55d7-0276-7f76-178a4d10da35}
+        acl-token: ${CONSUL_TOKEN:}
         register: true
         deregister: true
         prefer-ip-address: true
